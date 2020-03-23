@@ -2,7 +2,7 @@
  * @Author: sanye 
  * @Date: 2020-03-17 15:31:12 
  * @Last Modified by: sanye
- * @Last Modified time: 2020-03-20 16:31:38
+ * @Last Modified time: 2020-03-20 18:42:05
  */
 'use strict'
 const Generator = require('yeoman-generator')
@@ -23,16 +23,16 @@ module.exports = class extends Generator {
             description: props.description,
             dependencies: dependencies
         })
-        this.fs.writeJSON(this.destinationPath(`${this.props.appName}/package.json`), pkg)
+        this.fs.writeJSON(this.destinationPath(`${this.props.projectName}/package.json`), pkg)
     }
     initMain () {
         // 修改index.html
         this.fs.copyTpl(this.templatePath('common/public/index.html'),
-        this.destinationPath(`${this.props.appName}/public/index.html`),
+        this.destinationPath(`${this.props.projectName}/public/index.html`),
         {title: this.props.description, BASE_URL: '<%= BASE_URL %>'})
         // 修改main.js
         this.fs.copyTpl(this.templatePath('common/src/main.js'),
-        this.destinationPath(`${this.props.appName}/src/main.js`),
+        this.destinationPath(`${this.props.projectName}/src/main.js`),
         {temp: this.props.template, brandName: this.props.brandName})
     }
     prompting () {
@@ -87,11 +87,11 @@ module.exports = class extends Generator {
         // 拷贝文件，搭建脚手架
         this.fs.copy(
             this.templatePath('common/'),
-            this.destinationPath(`${this.props.appName}/`)
+            this.destinationPath(`${this.props.projectName}/`)
         )
         this.fs.copy(
             this.templatePath('tempJson/'),
-            this.destinationPath(`${this.props.appName}/`)
+            this.destinationPath(`${this.props.projectName}/`)
         )
         this.initPackage()
         this.initMain()
