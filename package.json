@@ -1,6 +1,6 @@
 {
   "name": "generator-ys-cli",
-  "version": "1.0.2-beta",
+  "version": "1.0.3-beta",
   "description": "生成前端脚手架",
   "main": "index.js",
   "scripts": {
